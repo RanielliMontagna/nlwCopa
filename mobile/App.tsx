@@ -22,7 +22,7 @@ export default function App() {
     <NativeBaseProvider theme={THEME}>
       <AuthContextProvider>
         <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
-        {!fontsLoaded ? <Loading /> : <Pools />}
+        {!fontsLoaded ? <Loading /> : <SignIn />}
       </AuthContextProvider>
     </NativeBaseProvider>
   );
