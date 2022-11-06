@@ -1,12 +1,12 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'native-base';
-import { PlusCircle, SoccerBall } from 'phosphor-react-native';
 import { Platform } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { PlusCircle, SoccerBall } from 'phosphor-react-native';
 
-import { Find } from '../screens/Find';
 import { New } from '../screens/New';
 import { Pools } from '../screens/Pools';
-import { SignIn } from '../screens/SignIn';
+import { Find } from '../screens/Find';
+import { Details } from '../screens/Details';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -14,7 +14,6 @@ export function AppRoutes() {
   const { colors, sizes } = useTheme();
 
   const size = sizes[6];
-
   return (
     <Navigator
       screenOptions={{
@@ -24,7 +23,7 @@ export function AppRoutes() {
         tabBarInactiveTintColor: colors.gray[300],
         tabBarStyle: {
           position: 'absolute',
-          height: 87,
+          height: sizes[22],
           borderTopWidth: 0,
           backgroundColor: colors.gray[800],
         },
@@ -38,21 +37,31 @@ export function AppRoutes() {
         name="new"
         component={New}
         options={{
-          tabBarIcon: ({ color, size }) => <PlusCircle color={color} size={size} />,
+          tabBarIcon: ({ color }) => <PlusCircle color={color} size={size} />,
           tabBarLabel: 'Novo bolão',
         }}
       />
+
       <Screen
         name="pools"
         component={Pools}
         options={{
-          tabBarIcon: ({ color, size }) => <SoccerBall color={color} size={size} />,
+          tabBarIcon: ({ color }) => <SoccerBall color={color} size={size} />,
           tabBarLabel: 'Meus bolões',
         }}
       />
+
       <Screen
         name="find"
         component={Find}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+
+      <Screen
+        name="details"
+        component={Details}
         options={{
           tabBarButton: () => null,
         }}
